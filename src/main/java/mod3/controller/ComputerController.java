@@ -20,7 +20,7 @@ import mod3.exceptions.ResourceNotFoundException;
 
 @CrossOrigin(origins="http://localhost:3000")
 @RestController
-@RequestMapping("/api/")
+@RequestMapping("/ctapi/")
 public class ComputerController {
 
 @Autowired
@@ -28,9 +28,9 @@ public class ComputerController {
     
 
 
-	//get all students
+	//get all computers
 	
-	@GetMapping("/allstudents")
+	@GetMapping("/allcomputers")
 	public List<Computer> getAllComputers()
 	{
 		
@@ -38,7 +38,7 @@ public class ComputerController {
 	}
 	
 
-	@PostMapping("/addstudent")
+	@PostMapping("/addcomputer")
     public Computer newComputer(@RequestBody Computer s)
     {
 		
@@ -46,7 +46,7 @@ public class ComputerController {
     }
 	
 	
-	@GetMapping("/student/{id}")
+	@GetMapping("/computer/{id}")
 	public ResponseEntity<Computer> getComputerById(@PathVariable int id)
 	{
 		Computer s = computerRepo.findById(id).orElseThrow(() ->  new ResourceNotFoundException("Computer not found"));
@@ -81,7 +81,7 @@ public class ComputerController {
 
 	
 	@DeleteMapping("/computer/{id}")
-	public String deleteStudent(@PathVariable int id)
+	public String deleteComputer(@PathVariable int id)
 	{
 		computerRepo.findById(id).orElseThrow(() ->  new ResourceNotFoundException("Computer not found"));
 	    computerRepo.deleteById(id);
