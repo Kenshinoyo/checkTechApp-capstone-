@@ -18,7 +18,7 @@ const App = () => {
           <Home />
         </Route>
         
-        <Route exact path="/ctapi/allcomputers"> 
+        <Route exact path="/allcomputers"> 
           <Computers />
         </Route>
 
