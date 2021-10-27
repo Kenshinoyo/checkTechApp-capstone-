@@ -8,41 +8,40 @@ class AddComputer extends Component {
     {
         super(props)
         this.state={
-           id: 0,
            price: 0,
-           os:''
+           os:'',
+           releaseYear: 0
         }
       
-        this.idHandler = this.idHandler.bind(this);
         this.priceHandler = this.priceHandler.bind(this);
         this.osHandler = this.osHandler.bind(this);
+        this.releaseYearHandler = this.releaseYearHandler.bind(this);
 
     }
-     
-    idHandler=(event) => {
-        this.setState({
-             id: event.target.value});
-    }
-
 
     priceHandler=(event) => {
         this.setState({
            price: event.target.value});
     }
-
-     
+   
     osHandler=(event) => {
         this.setState({
              os: event.target.value});
+    }
+    
+    releaseYearHandler=(event) => {
+        this.setState({
+             releaseYear: event.target.value});
     }
 
     saveComputer = (e) => {
         e.preventDefault();
         let Computer={
-           id: this.state.id,
            price: this.state.price,
-           os: this.state.os
+           os: this.state.os,
+           releaseYear: this.state.releaseYear
         };
+
         console.log(Computer);
         DBridge.createComputer(Computer).then(res =>{
                 this.props.history.push('/Computers');  
@@ -67,24 +66,28 @@ class AddComputer extends Component {
                       <div classprice="card col-md-6 offset-md-3 offset-md-3">
                           <h3 classprice="text-center">Add Computer</h3>
                           <div classprice="card-body">
-                              <form>  
-                                  <div classprice="form-group">
-                                      <label>Computer ID: </label>
-                                      <input type="number" placeholder="Id" price="id" classprice="form-control"
-                                         value={this.state.id} onChange={this.idHandler} />
-                                   </div>   
+                              <form> 
+                             
                                    <div classprice="form-group">
                                       <label>Computer price: </label>
                                       <input type="number" placeholder="price" price="price" classprice="form-control"
                                          value={this.state.price} onChange={this.priceHandler} />
-                                   </div>   
+                                   </div> 
+
                                    <div classprice="form-group">
-                                      <label>Computer os: </label>
-                                      <input placeholder="os" price="os" classprice="form-control"
+                                      <label>Operating System: </label>
+                                      <input placeholder="OS" os="OS" classprice="form-control"
                                          value={this.state.os} onChange={this.osHandler} />
-                                   </div>   
+                                   </div>
+                                   
+                                   <div classprice="form-group">
+                                      <label>Release Year: </label>
+                                      <input type="number" placeholder="Release Year" releaseYear="Release Year" classprice="form-control"
+                                         value={this.state.releaseYear} onChange={this.releaseYearHandler} />
+                                   </div>      
                                     <button classprice="btn btn-success" onClick={this.saveComputer}> Save </button>
-                                    <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>                    
+                                    <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>  
+                                                      
                               </form>
                           </div>
                       </div>

@@ -2,6 +2,9 @@ import React, { Component } from 'react';
 import DBridge from '../Services/DBridge';
 
 class UpdateComputer extends Component {
+    
+    //constructor
+    
     constructor(props)
     {
         super(props)
@@ -9,23 +12,27 @@ class UpdateComputer extends Component {
              this.state={
                  id: this.props.match.params.id,
                  price: 0,
-                 os:''
+                 os:'',
+                 releaseYear: 0
              }
      
         this.idHandler = this.idHandler.bind(this);
         this.priceHandler = this.priceHandler.bind(this);
         this.osHandler = this.osHandler.bind(this);
+        this.releaseYearHandler = this.releaseYearHandler.bind(this);
         this.updateComputer = this.updateComputer.bind(this);
 
-    }//constructor
+    }
 
      componentDidMount()
      {
-        DBridge.getComputerByID(this.state.id).then((res) =>{
+        DBridge.getComputerByID(this.state.id).then((res) => {
           let Computer = res.data;
-          this.setState({price:Computer.price,
-                  os:Computer.os
-                });
+          this.setState({
+            price: Computer.price,
+            os: Computer.os,
+            releaseYear: Computer.releaseYear
+            });
         });
            
      }
@@ -40,9 +47,14 @@ class UpdateComputer extends Component {
            price: event.target.value});
     }
 
-   osHandler=(event) => {
+    osHandler=(event) => {
         this.setState({
              os: event.target.value});
+    }
+
+    releaseYearHandler=(event) => {
+        this.setState({
+             releaseYear: event.target.value});
     }
 
    updateComputer = (e) => {

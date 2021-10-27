@@ -9,7 +9,7 @@ const Computers = (props) => {
 
     return (
         <div>
-            THIS IS OUR COMPUTER PAGE
+            CheckTech Management Tool
             <DBCrudTool history = {history} />
         </div>
     )

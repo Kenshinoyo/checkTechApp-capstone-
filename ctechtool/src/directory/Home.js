@@ -5,7 +5,7 @@ const Home = (props) => {
 
     return (
         <div>
-            THIS IS OUR HOME PAGE
+            CheckTech Inventory Management
         </div>
     )
 };
