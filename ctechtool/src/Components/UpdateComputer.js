@@ -21,7 +21,7 @@ class UpdateComputer extends Component {
 
      componentDidMount()
      {
-        DBridge.getComputerById(this.state.id).then((res) =>{
+        DBridge.getComputerByID(this.state.id).then((res) =>{
           let Computer = res.data;
           this.setState({price:Computer.price,
                   os:Computer.os

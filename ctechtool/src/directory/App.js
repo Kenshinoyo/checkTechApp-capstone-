@@ -9,7 +9,14 @@ import Results from '../Components/Results';
 import Home from './Home';
 import Computers from './Computers';
 
+//CRUD Components
+import AddComputer from '../Components/AddComputer';
+import UpdateComputer from '../Components/UpdateComputer';
+import DeleteComputer from '../Components/DeleteComputer';
+import ViewComputer from '../Components/ViewComputer';
+
 import '../App.css';
+
 
 const App = () => {
   
@@ -32,6 +39,11 @@ const App = () => {
         <Route exact path="/results"> 
           <Results />
         </Route>
+
+        <Route exact path="/add-computer" component = {AddComputer}/> 
+        <Route exact path="/update-computer/:id" component = {UpdateComputer}/> 
+        <Route exact path="/delete-computer/:id" component = {DeleteComputer}/>
+        <Route exact path="/view-computer/:id" component = {ViewComputer}/>
 
       </Switch>
 
