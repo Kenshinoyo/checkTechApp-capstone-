@@ -1,15 +1,22 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
+import NavBar from '../Components/NavBar';
+// import SearchBar from '../Components/SearchBar';
+import Footer from '../Components/Footer';
+import Results from '../Components/Results';
 
-import '../App.css'
+import Home from './Home';
+import Computers from './Computers';
+
+import '../App.css';
 
 const App = () => {
   
   return (
     <div id="app" > 
     
-     <SearchBar />
+     {/* <SearchBar /> */}
      <NavBar />
       
 

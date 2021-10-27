@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import DBridge from '../DBActions/DBridge';
+// import { withRouter } from 'react-router-dom;
+import DBridge from '../Services/DBridge';
 
-class ListComputers extends Component {
+class DBCrudTool extends Component {
       constructor(props)
       {
-          super(props)
-          this.state = {
-            computerss:[] 
+        super(props)
+
+            this.state = {
+            computers:[] 
           }
           this.addComputer=this.addComputer.bind(this);
           this.editComputer=this.editComputer.bind(this);
@@ -79,9 +81,9 @@ class ListComputers extends Component {
                                          <td>{computer.OS}</td>
                                          <td>{computer.releaseYear}</td>
                                          <td>
-                                            <button onClick={() =>this.editcomputer(computer.id)} className="btn btn-primary">Update</button> 
-                                            <button onClick={() =>this.deletecomputer(computer.id)} className="btn btn-danger">Delete</button> 
-                                            <button onClick={() =>this.viewcomputer(computer.id)} className="btn btn-primary">View</button> 
+                                            <button onClick={() =>this.editComputer(computer.id)} className="btn btn-primary">Update</button> 
+                                            <button onClick={() =>this.deleteComputer(computer.id)} className="btn btn-danger">Delete</button> 
+                                            <button onClick={() =>this.viewComputer(computer.id)} className="btn btn-primary">View</button> 
                                          </td>
                                      </tr>
                                 )
@@ -95,4 +97,4 @@ class ListComputers extends Component {
     }
 }
 
-export default ListComputers;
+export default DBCrudTool;
