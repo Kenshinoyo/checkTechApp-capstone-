@@ -5,7 +5,7 @@ create, read, update, and delete whole lists/entries for managing your PC databa
 
 *FEATURES*:
 
-~~Features will be added/udpated/deleted over time!~~
+**Features will be added/udpated/deleted over time!**
 
 - User currently has the ability to add a Computer with fields for the price, operating system(os), and release year.
 - User can view 
@@ -18,5 +18,5 @@ create, read, update, and delete whole lists/entries for managing your PC databa
 
 *ERROR LOG*:
 
-- 
+- JSON render for all computers stopped working due to a network error
 
