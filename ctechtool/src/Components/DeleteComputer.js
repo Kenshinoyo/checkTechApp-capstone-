@@ -11,8 +11,8 @@ class DeleteComputer extends Component {
         
              this.state={
                  id: this.props.match.params.id,
-                 price: 0,
-                 os:''
+                 Price: 0,
+                 OS:''
              }
      
         
@@ -22,10 +22,11 @@ class DeleteComputer extends Component {
 
      componentDidMount()
      {
-        DBridge.getComputerById(this.state.id).then((res) =>{
+        DBridge.getComputerByID(this.state.id).then((res) =>{
           let Computer = res.data;
-          this.setState({price:Computer.price,
-                  os:Computer.os
+          this.setState({
+                Price:Computer.Price,
+                OS:Computer.OS
                 });
         });
            
@@ -38,8 +39,8 @@ class DeleteComputer extends Component {
         e.preventDefault();
         let Computer={
            id: this.state.id,
-           price: this.state.price,
-           os: this.state.os
+           Price: this.state.Price,
+           OS: this.state.OS
         };
 
         console.log(Computer);
@@ -72,12 +73,12 @@ class DeleteComputer extends Component {
                                    <div classprice="form-group">
                                       <label>Computer price: </label>
                                       <input type = "number" placeholder = "price" readOnly = "true" price = "price" classprice = "form-control"
-                                         value={this.state.price} onChange={this.priceHandler} />
+                                         value={this.state.Price} onChange={this.priceHandler} />
                                    </div>   
                                    <div classprice="form-group">
                                       <label>Computer os: </label>
                                       <input placeholder = "os" readOnly = "true" price = "os" classprice = "form-control"
-                                         value={this.state.os} onChange={this.osHandler} />
+                                         value={this.state.OS} onChange={this.osHandler} />
                                    </div>   
                                     <button classprice="btn btn-success" onClick={this.deleteComputer}> Delete </button>
                                     <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>                    

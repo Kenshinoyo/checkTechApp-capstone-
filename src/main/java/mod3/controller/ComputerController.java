@@ -40,8 +40,8 @@ public class ComputerController {
 
 	@PostMapping("/addcomputer")
     public Computer newComputer(@RequestBody Computer s)
-    {
-		
+    {	
+		System.out.println(s);
 		return computerRepo.save(s);
     }
 	
@@ -66,6 +66,30 @@ public class ComputerController {
 		
 		return computerRepo.findByPrice(price);
 	}
+	
+//	@GetMapping("/computers/{OS}")
+//	public List<Computer> getComputerByOS(@PathVariable String OS)
+//	{	
+//		List <Computer> computers=computerRepo.findByOS(OS);
+//		if(computers.isEmpty())
+//		{
+//			System.out.println(new ResourceNotFoundException("There are no computer(s) that use that"+ OS +"."));
+//		}
+//		
+//		return computerRepo.findByOS(OS);
+//	}
+//	
+//	@GetMapping("/computers/{ReleaseYear}")
+//	public List<Computer> getComputerByReleaseYear(@PathVariable int ReleaseYear)
+//	{
+//		List <Computer> computers=computerRepo.findByReleaseYear(ReleaseYear);
+//		if(computers.isEmpty())
+//		{
+//			System.out.println(new ResourceNotFoundException("There are no computer(s) that were made during the year"+ ReleaseYear +"."));
+//		}
+//		
+//		return computerRepo.findByReleaseYear(ReleaseYear);
+//	}
 	
 	
 	@PutMapping("/computer/{id}")

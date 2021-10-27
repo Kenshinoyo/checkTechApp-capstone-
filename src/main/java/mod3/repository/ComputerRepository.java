@@ -11,4 +11,6 @@ import mod3.model.Computer;
 public interface ComputerRepository extends JpaRepository<Computer, Integer>{
 
 	List<Computer> findByPrice(float price);
+//	List<Computer> findByOS(String OS);
+//	List<Computer> findByReleaseYear(int ReleaseYear);
 }

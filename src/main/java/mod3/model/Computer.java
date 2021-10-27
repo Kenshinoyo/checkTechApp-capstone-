@@ -8,7 +8,7 @@ import javax.persistence.Table;
 // -This is the parent table
 
 @Entity
-@Table(name="Computers")
+@Table(name="computers")
 
 // "Computers" table for desktop PCs only
 public class Computer {
@@ -16,19 +16,19 @@ public class Computer {
 	private int id; // Unique identifier for PCs
 	private float price; // "price" field in Computers table is a decimal type with 8 slots and 2 decimal points
     private String OS;
-    private int Release_Year;
+    private int ReleaseYear;
       
     public Computer()
     {
     	
     }
     
-    public Computer(int id, float price, String OS, int Release_Year) {
+    public Computer(int id, float price, String OS, int ReleaseYear) {
 		super();
 		this.id = id;
 		this.price = price;
 		this.OS = OS;
-		this.Release_Year = Release_Year;
+		this.ReleaseYear = ReleaseYear;
 	}
     
 	public int getId() {
@@ -50,10 +50,10 @@ public class Computer {
 		this.OS = OS;
 	}
 	public int getRelease_Year() {
-		return Release_Year;
+		return ReleaseYear;
 	}
-	public void setRelease_Year(int Release_Year) {
-		this.Release_Year = Release_Year;
+	public void setRelease_Year(int ReleaseYear) {
+		this.ReleaseYear = ReleaseYear;
 	}
 	
 }

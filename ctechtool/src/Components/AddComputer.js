@@ -9,7 +9,7 @@ class AddComputer extends Component {
         super(props)
         this.state={
            price: 0,
-           os:'',
+           OS:'',
            releaseYear: 0
         }
       
@@ -26,7 +26,7 @@ class AddComputer extends Component {
    
     osHandler=(event) => {
         this.setState({
-             os: event.target.value});
+             OS: event.target.value});
     }
     
     releaseYearHandler=(event) => {
@@ -38,7 +38,7 @@ class AddComputer extends Component {
         e.preventDefault();
         let Computer={
            price: this.state.price,
-           os: this.state.os,
+           OS: this.state.OS,
            releaseYear: this.state.releaseYear
         };
 
@@ -77,7 +77,7 @@ class AddComputer extends Component {
                                    <div classprice="form-group">
                                       <label>Operating System: </label>
                                       <input placeholder="OS" os="OS" classprice="form-control"
-                                         value={this.state.os} onChange={this.osHandler} />
+                                         value={this.state.OS} onChange={this.osHandler} />
                                    </div>
                                    
                                    <div classprice="form-group">

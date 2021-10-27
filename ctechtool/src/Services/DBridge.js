@@ -1,5 +1,5 @@
 import axios from 'axios';
-const CT_BASE_URL = "http://localhost:8080/ctapi/";
+const CT_BASE_URL = "http://localhost:8080/ctapi";
 
 class DBridge{
     
@@ -20,7 +20,7 @@ class DBridge{
     }
 
     deleteComputer(id){
-        return axios.delete(CT_BASE_URL);
+        return axios.delete(CT_BASE_URL+"/computer/"+ id);
     }
 }
 
