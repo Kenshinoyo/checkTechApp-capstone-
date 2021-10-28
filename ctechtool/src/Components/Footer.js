@@ -3,7 +3,7 @@ import React from 'react';
 const Footer = () => {
     return (
       <div id="footer">
-        THIS IS OUR FOOTER
+        CheckTech Inc. est. 2008
       </div>
     );
 }

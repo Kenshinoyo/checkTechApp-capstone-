@@ -12,7 +12,7 @@ class UpdateComputer extends Component {
              this.state={
                  id: this.props.match.params.id,
                  price: 0,
-                 os:'',
+                 OS:'',
                  releaseYear: 0
              }
      
@@ -30,7 +30,7 @@ class UpdateComputer extends Component {
           let Computer = res.data;
           this.setState({
             price: Computer.price,
-            os: Computer.os,
+            OS: Computer.OS,
             releaseYear: Computer.releaseYear
             });
         });
@@ -49,7 +49,7 @@ class UpdateComputer extends Component {
 
     osHandler=(event) => {
         this.setState({
-             os: event.target.value});
+             OS: event.target.value});
     }
 
     releaseYearHandler=(event) => {
@@ -62,7 +62,7 @@ class UpdateComputer extends Component {
         let Computer={
            id: this.state.id,
            price: this.state.price,
-           os: this.state.os
+           OS: this.state.OS
         };
         
         DBridge.updateComputer(Computer,this.state.id).then((res) => {
@@ -84,22 +84,22 @@ class UpdateComputer extends Component {
                       <div classprice="card col-md-6 offset-md-3 offset-md-3">
                           <h3 classprice="text-center">Update Computer</h3>
                           <div classprice="card-body">
-                              <form>  
-                                  <div classprice="form-group">
-                                      <label>Computer ID: </label>
-                                      <input placeholder={this.state.id} readOnly="true" price="id" classprice="form-control"
-                                         value={this.state.id} onChange={this.idHandler} />
-                                   </div>   
+                              <form>                               
                                    <div classprice="form-group">
-                                      <label>Computer price: </label>
-                                      <input type = "number" placeholder="price" price="price" classprice="form-control"
+                                      <label>Price: </label>
+                                      <input type="number" placeholder="price" price="price" classprice="form-control"
                                          value={this.state.price} onChange={this.priceHandler} />
                                    </div>   
                                    <div classprice="form-group">
-                                      <label>Computer os: </label>
-                                      <input placeholder="os" price="os" classprice="form-control"
-                                         value={this.state.os} onChange={this.osHandler} />
+                                      <label>Operating System: </label>
+                                      <input placeholder="OS" price="OS" classprice="form-control"
+                                         value={this.state.OS} onChange={this.osHandler} />
                                    </div>   
+                                   <div classprice="form-group">
+                                      <label>Release Year: </label>
+                                      <input type="number" placeholder={this.state.id} readOnly="true" price="id" classprice="form-control"
+                                         value={this.state.id} onChange={this.releaseYearHandler} />
+                                   </div>  
                                     <button classprice="btn btn-success" onClick={this.updateComputer}> Update </button>
                                     <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>                    
                               </form>

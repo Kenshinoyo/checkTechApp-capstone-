@@ -69,7 +69,7 @@ class AddComputer extends Component {
                               <form> 
                              
                                    <div classprice="form-group">
-                                      <label>Computer price: </label>
+                                      <label>Price: </label>
                                       <input type="number" placeholder="price" price="price" classprice="form-control"
                                          value={this.state.price} onChange={this.priceHandler} />
                                    </div> 

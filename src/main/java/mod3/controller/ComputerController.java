@@ -67,29 +67,29 @@ public class ComputerController {
 		return computerRepo.findByPrice(price);
 	}
 	
-//	@GetMapping("/computers/{OS}")
-//	public List<Computer> getComputerByOS(@PathVariable String OS)
-//	{	
-//		List <Computer> computers=computerRepo.findByOS(OS);
-//		if(computers.isEmpty())
-//		{
-//			System.out.println(new ResourceNotFoundException("There are no computer(s) that use that"+ OS +"."));
-//		}
-//		
-//		return computerRepo.findByOS(OS);
-//	}
-//	
-//	@GetMapping("/computers/{ReleaseYear}")
-//	public List<Computer> getComputerByReleaseYear(@PathVariable int ReleaseYear)
-//	{
-//		List <Computer> computers=computerRepo.findByReleaseYear(ReleaseYear);
-//		if(computers.isEmpty())
-//		{
-//			System.out.println(new ResourceNotFoundException("There are no computer(s) that were made during the year"+ ReleaseYear +"."));
-//		}
-//		
-//		return computerRepo.findByReleaseYear(ReleaseYear);
-//	}
+	@GetMapping("/computers/{OS}")
+	public List<Computer> getComputerByOS(@PathVariable String OS)
+	{	
+		List <Computer> computers=computerRepo.findByOS(OS);
+		if(computers.isEmpty())
+		{
+			System.out.println(new ResourceNotFoundException("There are no computer(s) that use that"+ OS +"."));
+		}
+		
+		return computerRepo.findByOS(OS);
+	}
+	
+	@GetMapping("/computers/{releaseYear}")
+	public List<Computer> getComputerByreleaseYear(@PathVariable int releaseYear)
+	{
+		List <Computer> computers=computerRepo.findByReleaseYear(releaseYear);
+		if(computers.isEmpty())
+		{
+			System.out.println(new ResourceNotFoundException("There are no computer(s) that were made during the year"+ releaseYear +"."));
+		}
+		
+		return computerRepo.findByReleaseYear(releaseYear);
+	}
 	
 	
 	@PutMapping("/computer/{id}")
@@ -97,7 +97,8 @@ public class ComputerController {
 	{
 		Computer s= computerRepo.findById(id).orElseThrow(() ->  new ResourceNotFoundException("Computer not found"));
 	    s.setPrice(computer.getPrice());
-//	    s.setOS(computer.getOS());
+	    s.setOS(computer.getOS());
+	    s.setreleaseYear(computer.getreleaseYear());
 	    Computer updatedComputer = computerRepo.save(s);
 	    return ResponseEntity.ok(updatedComputer);
 	}

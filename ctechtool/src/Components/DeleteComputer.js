@@ -64,21 +64,21 @@ class DeleteComputer extends Component {
                       <div classprice="card col-md-6 offset-md-3 offset-md-3">
                           <h3 classprice="text-center">Delete Computer</h3>
                           <div classprice="card-body">
-                              <form>  
-                                  <div classprice="form-group">
-                                      <label>Computer ID: </label>
-                                      <input placeholder="Id" readOnly="true" price="id" classprice="form-control"
-                                         value={this.state.id} onChange={this.idHandler} />
-                                   </div>   
+                              <form>                               
                                    <div classprice="form-group">
-                                      <label>Computer price: </label>
+                                      <label>Price: </label>
                                       <input type = "number" placeholder = "price" readOnly = "true" price = "price" classprice = "form-control"
                                          value={this.state.Price} onChange={this.priceHandler} />
                                    </div>   
                                    <div classprice="form-group">
-                                      <label>Computer os: </label>
+                                      <label>Operating System: </label>
                                       <input placeholder = "os" readOnly = "true" price = "os" classprice = "form-control"
                                          value={this.state.OS} onChange={this.osHandler} />
+                                   </div>                                
+                                   <div classprice="form-group">
+                                      <label>Release Year: </label>
+                                      <input type="number" placeholder="Id" readOnly="true" price="id" classprice="form-control"
+                                         value={this.state.id} onChange={this.releaseYearHandler} />
                                    </div>   
                                     <button classprice="btn btn-success" onClick={this.deleteComputer}> Delete </button>
                                     <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>                    

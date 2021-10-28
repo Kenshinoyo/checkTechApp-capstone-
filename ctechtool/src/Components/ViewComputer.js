@@ -19,7 +19,7 @@ class ViewComputer extends Component {
 
      componentDidMount()
      {
-        DBridge.getcomputerById(this.state.id).then((res) =>{
+        DBridge.getcomputerById(this.state.id).then((res) => {
             this.setState({computer:res.data})
          });
      }
@@ -40,13 +40,16 @@ class ViewComputer extends Component {
                                    </div>   
                                    <div className="form-group">
                                       <label>Price: </label>
-                                      <input type="number" placeholder={this.state.computer.price} readOnly={true} name="name" className="form-control" />
+                                      <input type="number" placeholder={this.state.computer.price} readOnly={true} name="Price" className="form-control" />
                                    </div>   
                                    <div className="form-group">
                                       <label>OS: </label>
-                                      <input placeholder={this.state.computer.os} readOnly={true} name="grade" className="form-control" />
+                                      <input placeholder={this.state.computer.os} readOnly={true} name="OS" className="form-control" />
                                    </div> 
-                                                                     
+                                   <div className="form-group">
+                                      <label>Release Year: </label>
+                                      <input type="number" placeholder={this.state.computer.releaseYear} readOnly={true} name="Release Year" className="form-control" />
+                                   </div>                                                     
                               </form>
                           </div>
                       </div>

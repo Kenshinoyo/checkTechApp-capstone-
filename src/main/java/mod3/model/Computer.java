@@ -16,19 +16,19 @@ public class Computer {
 	private int id; // Unique identifier for PCs
 	private float price; // "price" field in Computers table is a decimal type with 8 slots and 2 decimal points
     private String OS;
-    private int ReleaseYear;
+    private int releaseYear;
       
     public Computer()
     {
     	
     }
     
-    public Computer(int id, float price, String OS, int ReleaseYear) {
+    public Computer(int id, float price, String OS, int releaseYear) {
 		super();
 		this.id = id;
 		this.price = price;
 		this.OS = OS;
-		this.ReleaseYear = ReleaseYear;
+		this.releaseYear = releaseYear;
 	}
     
 	public int getId() {
@@ -46,14 +46,14 @@ public class Computer {
 	public String getOS() {
 		return OS;
 	}
-	public void setGrade(String OS) {
+	public void setOS(String OS) {
 		this.OS = OS;
 	}
-	public int getRelease_Year() {
-		return ReleaseYear;
+	public int getreleaseYear() {
+		return releaseYear;
 	}
-	public void setRelease_Year(int ReleaseYear) {
-		this.ReleaseYear = ReleaseYear;
+	public void setreleaseYear(int releaseYear) {
+		this.releaseYear = releaseYear;
 	}
 	
 }
