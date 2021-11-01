@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import DBridge from '../Services/DBridge';
 
 const AddComputerV2 = (props) => {
-
+    
     const [price, setPrice] = useState(0)
     const [OS, setOS] = useState('')
     const [releaseYear, setReleaseYear] = useState(0)
+    
 
+    // - "Helper" functions to allow user to manipulate state(s)
     priceHandler=(e) => {
         setPrice(e.target.value);
         console.log(e.target.value)
@@ -22,6 +25,8 @@ const AddComputerV2 = (props) => {
         console.log(e.target.value)
     }
 
+
+    //- Creates a new computer object for DB from user generated values
     saveComputer = (e) => {
         e.preventDefault();
         let Computer={
@@ -40,7 +45,7 @@ const AddComputerV2 = (props) => {
     }// -Closing save method
 
     cancel(){
-        this.props.history.push('/Computers');
+        this.history.push('/Computers');
     }
 
 
@@ -58,6 +63,7 @@ const AddComputerV2 = (props) => {
                                   <input type="number" placeholder="price" price="price" classprice="form-control"  
                                      value={price}
                                      onChange={(e) => {
+                                         e.preventDefault();
                                          return priceHandler(e);
                                      }}                                   
                                     />
@@ -68,6 +74,7 @@ const AddComputerV2 = (props) => {
                                   <input placeholder="OS" os="OS" classprice="form-control"
                                      value={OS}
                                      onChange={(e) => {
+                                        e.preventDefault();
                                         return osHandler(e);
                                     }} />
                                </div>
@@ -77,10 +84,16 @@ const AddComputerV2 = (props) => {
                                   <input type="number" placeholder="Release Year" releaseYear="Release Year" classprice="form-control"
                                      value={releaseYear}
                                      onChange={(e) => {
+                                        e.preventDefault();
                                         return releaseYearHandler(e);
-                                    }} />
+                                    }}
+                                    />
                                </div>      
-                                <button classprice="btn btn-success" onClick={this.saveComputer}> Save </button>
+                                <button classprice="btn btn-success" onClick={(e) => {
+                                         return saveComputer(e);
+                                     }}>
+                                         Save 
+                                </button>
                                 <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>  
                                                   
                           </form>
