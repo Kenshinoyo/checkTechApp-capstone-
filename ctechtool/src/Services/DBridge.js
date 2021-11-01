@@ -1,6 +1,7 @@
 import axios from 'axios';
 const CT_BASE_URL = "http://localhost:8080/ctapi";
 
+//- Connects the front end to the back end, allowing the use of JSON data
 class DBridge{
     
     getComputers(){

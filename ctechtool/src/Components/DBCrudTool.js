@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 // import { withRouter } from 'react-router-dom;
 import DBridge from '../Services/DBridge';
 
+//- Universal tool to allow for manipulation of JSON data
 class DBCrudTool extends Component {
       constructor(props)
       {
