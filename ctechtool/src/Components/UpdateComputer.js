@@ -1,63 +1,48 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import DBridge from '../Services/DBridge';
+import { useState } from 'react';
 
-class UpdateComputer extends Component {
-    
-    //constructor
-    
-    constructor(props)
+const UpdateComputer = (props) => {
+
+    const [id, setID] = useState(this.props.match.params.id)
+    const [price, setPrice] = useState(0)
+    const [OS, setOS] = useState('')
+    const [releaseYear, setReleaseYear] = useState(0)
+
+    componentDidMount()
     {
-        super(props)
-        
-             this.state={
-                 id: this.props.match.params.id,
-                 price: 0,
-                 OS:'',
-                 releaseYear: 0
-             }
-     
-        this.idHandler = this.idHandler.bind(this);
-        this.priceHandler = this.priceHandler.bind(this);
-        this.osHandler = this.osHandler.bind(this);
-        this.releaseYearHandler = this.releaseYearHandler.bind(this);
-        this.updateComputer = this.updateComputer.bind(this);
-
-    }
-
-     componentDidMount()
-     {
-        DBridge.getComputerByID(this.state.id).then((res) => {
-          let Computer = res.data;
-          this.setState({
-            price: Computer.price,
-            OS: Computer.OS,
-            releaseYear: Computer.releaseYear
+        DBridge.getComputerByID(id).then((res) => {
+            let Computer = res.data;
+            this.setState({
+                price: Computer.price,
+                OS: Computer.OS,
+                releaseYear: Computer.releaseYear
             });
         });
-           
+    }
+
+     // - "Helper" functions to allow user to manipulate state(s)
+     idHandler=(e) => {
+         setID(e.target.value)
+         console.log(e.target.value)
      }
-     
-    idHandler=(event) => {
-        this.setState({
-             id: event.target.value});
+
+     priceHandler=(e) => {
+        setPrice(e.target.value);
+        console.log(e.target.value)
     }
 
-    priceHandler=(event) => {
-        this.setState({
-           price: event.target.value});
+    osHandler=(e) => {
+        setOS(e.target.value);
+        console.log(e.target.value)
     }
 
-    osHandler=(event) => {
-        this.setState({
-             OS: event.target.value});
+    releaseYearHandler=(e) => {
+        setReleaseYear(e.target.value);
+        console.log(e.target.value)
     }
 
-    releaseYearHandler=(event) => {
-        this.setState({
-             releaseYear: event.target.value});
-    }
-
-   updateComputer = (e) => {
+    reformComputer = (e) => {
         e.preventDefault();
         let Computer={
            id: this.state.id,
@@ -65,19 +50,16 @@ class UpdateComputer extends Component {
            OS: this.state.OS
         };
         
-        DBridge.updateComputer(Computer,this.state.id).then((res) => {
+        DBridge.reformComputer(Computer,this.state.id).then((res) => {
                 this.props.history.push('/Computers');
         });
-      
-        
     }
 
     cancel(){
         this.props.history.push('/Computers');
     }
 
-    render() {
-        return (
+    return (
             <div>
                <div classprice="container">
                    <div classprice="row">
@@ -88,20 +70,41 @@ class UpdateComputer extends Component {
                                    <div classprice="form-group">
                                       <label>Price: </label>
                                       <input type="number" placeholder="price" price="price" classprice="form-control"
-                                         value={this.state.price} onChange={this.priceHandler} />
+                                         value={price}
+                                         onChange={(e) => {
+                                             e.preventDefault();
+                                             return priceHandler(e);
+                                         }} />
                                    </div>   
                                    <div classprice="form-group">
                                       <label>Operating System: </label>
-                                      <input placeholder="OS" price="OS" classprice="form-control"
-                                         value={this.state.OS} onChange={this.osHandler} />
+                                      <input placeholder="OS" os="OS" classprice="form-control"
+                                         value={OS}
+                                         onChange={(e) => {
+                                            e.preventDefault();
+                                            return osHandler(e);
+                                        }} />
                                    </div>   
                                    <div classprice="form-group">
                                       <label>Release Year: </label>
-                                      <input type="number" placeholder={this.state.id} readOnly="true" price="id" classprice="form-control"
-                                         value={this.state.id} onChange={this.releaseYearHandler} />
+                                      <input type="number" placeholder={id} readOnly="true" price="id" classprice="form-control"
+                                         value={id}
+                                         onChange={(e) => {
+                                            e.preventDefault();
+                                            return releaseHandler(e);
+                                        }} />
                                    </div>  
-                                    <button classprice="btn btn-success" onClick={this.updateComputer}> Update </button>
-                                    <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>                    
+                                    <button classprice="btn btn-success"
+                                    onClick={(e) => {
+                                        e.preventDefault();
+                                        return reformComputer(e);
+                                    }}> 
+                                    Update 
+                                    </button>
+                                    <button classprice="btn btn-danger"
+                                    onClick={this.cancel.bind(this)}>
+                                    Cancel 
+                                    </button>                    
                               </form>
                           </div>
                       </div>
@@ -109,7 +112,6 @@ class UpdateComputer extends Component {
                </div>
             </div>
         );
-    }
 }
 
 export default UpdateComputer;
