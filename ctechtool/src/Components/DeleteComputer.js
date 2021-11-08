@@ -1,46 +1,70 @@
-import React, { useState } from 'react';
-import { useHistory } from 'react-router';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import DBridge from '../Services/DBridge';
 
 const DeleteComputer = (props) => {
 
-    constructor(props)
-    {
-        const [state, setState] = useState({id, Price, OS})
-        const [id, setID] = useState(props.match.params.id)
-        const [Price, setPrice] = useState(0)
-        const [OS, setOS] = useState('')
+    const history = useHistory()
+            
+    const [id, setID] = useState(props.match.params.id)
+    const [Price, setPrice] = useState(0)
+    const [OS, setOS] = useState('')
+    const [releaseYear, setReleaseYear] = useState(0)
+    const [cpuState, setCPUState] = useState({id, Price, OS, releaseYear})
 
-    this.deleteComputer = this.deleteComputer.bind(this);
-    }
+    // this.deleteComputer = this.deleteComputer.bind(this);
+    
 
-    componentDidMount()
+    useEffect()
     {
-        DBridge.getComputerByID(state.id).then((res) => {
+        DBridge.getComputerByID(cpuState.id).then((res) => {
             let Computer = res.data;
-            props.setState({
-                Price: Computer.Price,
-                OS: Computer.OS
-            });
-        })
+            setCPUState(
+                Computer.id,
+                Computer.Price,
+                Computer.OS,
+                Computer.releaseYear);
+        });
     }
 
-    deleteComputer = (e) => {
+    // - "Helper" functions to allow user to manipulate state(s)
+    const idHandler = (e) => {
+        setID(e.target.value)
+        console.log(e.target.value)
+    }
+
+   const priceHandler = (e) => {
+       setPrice(e.target.value);
+       console.log(e.target.value)
+   }
+
+   const osHandler = (e) => {
+       setOS(e.target.value);
+       console.log(e.target.value)
+   }
+
+   const releaseYearHandler = (e) => {
+       setReleaseYear(e.target.value);
+       console.log(e.target.value)
+   }
+
+    const removeComputer = (e) => {
         e.preventDefault();
         let Computer = {
-            id: state.id,
-            Price: state.Price,
-            OS: state.OS
+            id: cpuState.id,
+            Price: cpuState.Price,
+            OS: cpuState.OS,
+            releaseYear: cpuState.releaseYear
         };
 
         console.log(Computer)
-        DBridge.deleteComputer(state.id).then(res => {
-            props.history.push('/Computers');
+        DBridge.removeComputer(cpuState.id).then(res => {
+            history.push('/Computers');
         })
     }
 
-    cancel(){
-        props.history.push('/Computers');
+    cancel();{
+        this.history.push('/Computers');
     }
 
     return (
@@ -80,7 +104,7 @@ const DeleteComputer = (props) => {
                                     }}
                                     />
                                </div>   
-                                <button classprice="btn btn-success" onClick={this.deleteComputer}> Delete </button>
+                                <button classprice="btn btn-success" onClick={removeComputer()}> Delete </button>
                                 <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>                    
                           </form>
                       </div>

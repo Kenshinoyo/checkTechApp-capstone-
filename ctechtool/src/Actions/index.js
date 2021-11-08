@@ -12,3 +12,14 @@ const addComputerAction = (userInput) => dispatch => {
 
     dispatch({ type: USER_TYPING })
 }
+
+// const computerData = () => {
+//     DBridge.getComputerByID(id).then((res) => {
+//         let Computer = res.data;
+//         setCPUState(
+//             Computer.Price,
+//             Computer.OS,
+//             Computer.releaseYear);
+//     });
+// }
+

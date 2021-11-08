@@ -1,62 +1,73 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import DBridge from '../Services/DBridge';
-import { useState } from 'react';
 
 const UpdateComputer = (props) => {
 
-    const [id, setID] = useState(this.props.match.params.id)
-    const [price, setPrice] = useState(0)
+    const history = useHistory()
+
+    const [id, setID] = useState(props.match.params.id)
+    const [Price, setPrice] = useState(0)
     const [OS, setOS] = useState('')
     const [releaseYear, setReleaseYear] = useState(0)
 
-    componentDidMount()
+    // - "Placeholder" state for JSON data
+    const [cpuState, setCPUState] = useState({Price, OS, releaseYear})
+        
+    // this.idHandler = this.idHandler.bind(this);
+    // this.priceHandler = this.priceHandler.bind(this);
+    // this.osHandler = this.osHandler.bind(this);
+    // this.releaseYearHandler = this.releaseYearHandler.bind(this);
+    // this.reformComputer = this.reformComputer.bind(this);      
+
+    useEffect()
     {
         DBridge.getComputerByID(id).then((res) => {
             let Computer = res.data;
-            this.setState({
-                price: Computer.price,
-                OS: Computer.OS,
-                releaseYear: Computer.releaseYear
-            });
+            setCPUState(
+                Computer.Price,
+                Computer.OS,
+                Computer.releaseYear);
         });
     }
+  
 
-     // - "Helper" functions to allow user to manipulate state(s)
-     idHandler=(e) => {
+    // - "Helper" functions to allow user to manipulate state(s)
+    const idHandler=(e) => {
          setID(e.target.value)
          console.log(e.target.value)
      }
 
-     priceHandler=(e) => {
+    const priceHandler=(e) => {
         setPrice(e.target.value);
         console.log(e.target.value)
     }
 
-    osHandler=(e) => {
+    const osHandler=(e) => {
         setOS(e.target.value);
         console.log(e.target.value)
     }
 
-    releaseYearHandler=(e) => {
+    const releaseYearHandler=(e) => {
         setReleaseYear(e.target.value);
         console.log(e.target.value)
     }
 
-    reformComputer = (e) => {
+    const reformComputer = (e) => {
         e.preventDefault();
         let Computer={
-           id: this.state.id,
-           price: this.state.price,
-           OS: this.state.OS
+           id: id,
+           price: cpuState.Price,
+           OS: cpuState.OS
         };
         
-        DBridge.reformComputer(Computer,this.state.id).then((res) => {
-                this.props.history.push('/Computers');
+        DBridge.reformComputer(Computer,this.cpuState.id).then((res) => {
+                history.push('/Computers');
         });
     }
 
-    cancel(){
-        this.props.history.push('/Computers');
+    props.cancel();{
+        history.push('/Computers');
     }
 
     return (
@@ -70,7 +81,7 @@ const UpdateComputer = (props) => {
                                    <div classprice="form-group">
                                       <label>Price: </label>
                                       <input type="number" placeholder="price" price="price" classprice="form-control"
-                                         value={price}
+                                         value={cpuState.Price}
                                          onChange={(e) => {
                                              e.preventDefault();
                                              return priceHandler(e);
@@ -79,7 +90,7 @@ const UpdateComputer = (props) => {
                                    <div classprice="form-group">
                                       <label>Operating System: </label>
                                       <input placeholder="OS" os="OS" classprice="form-control"
-                                         value={OS}
+                                         value={cpuState.OS}
                                          onChange={(e) => {
                                             e.preventDefault();
                                             return osHandler(e);
@@ -88,23 +99,16 @@ const UpdateComputer = (props) => {
                                    <div classprice="form-group">
                                       <label>Release Year: </label>
                                       <input type="number" placeholder={id} readOnly="true" price="id" classprice="form-control"
-                                         value={id}
+                                         value={cpuState.id}
                                          onChange={(e) => {
                                             e.preventDefault();
-                                            return releaseHandler(e);
+                                            return releaseYearHandler(e);
                                         }} />
                                    </div>  
                                     <button classprice="btn btn-success"
-                                    onClick={(e) => {
-                                        e.preventDefault();
-                                        return reformComputer(e);
-                                    }}> 
-                                    Update 
-                                    </button>
+                                    onClick={reformComputer()}> Update </button>
                                     <button classprice="btn btn-danger"
-                                    onClick={this.cancel.bind(this)}>
-                                    Cancel 
-                                    </button>                    
+                                    onClick={this.cancel.bind(this)}> Cancel </button>                    
                               </form>
                           </div>
                       </div>

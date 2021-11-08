@@ -4,35 +4,36 @@ import DBridge from '../Services/DBridge';
 
 const AddComputerV2 = (props) => {
     
-    const [price, setPrice] = useState(0)
+    const [state, setState] = useState({Price, OS, releaseYear})
+    const [Price, setPrice] = useState(0)
     const [OS, setOS] = useState('')
     const [releaseYear, setReleaseYear] = useState(0)
     
 
     // - "Helper" functions to allow user to manipulate state(s)
-    priceHandler=(e) => {
+    props.priceHandler=(e) => {
         setPrice(e.target.value);
         console.log(e.target.value)
     }
 
-    osHandler=(e) => {
+    props.osHandler=(e) => {
         setOS(e.target.value);
         console.log(e.target.value)
     }
 
-    releaseYearHandler=(e) => {
+    props.releaseYearHandler=(e) => {
         setReleaseYear(e.target.value);
         console.log(e.target.value)
     }
 
 
     //- Creates a new computer object for DB from user generated values
-    saveComputer = (e) => {
+    props.saveComputer = (e) => {
         e.preventDefault();
         let Computer={
-            price: price,
-            OS: OS,
-            releaseYear: releaseYear
+            price: state.Price,
+            OS: state.OS,
+            releaseYear: state.releaseYear
         };
 
         console.log(Computer);
@@ -44,8 +45,8 @@ const AddComputerV2 = (props) => {
         })
     }// -Closing save method
 
-    cancel(){
-        this.history.push('/Computers');
+    props.cancel();{
+        this.props.history.push('/Computers');
     }
 
 
@@ -60,11 +61,11 @@ const AddComputerV2 = (props) => {
                          
                                <div classprice="form-group">
                                   <label>Price: </label>
-                                  <input type="number" placeholder="price" price="price" classprice="form-control"  
-                                     value={price}
+                                  <input type="number" placeholder="Price" price="Price" classprice="form-control"  
+                                     value={state.Price}
                                      onChange={(e) => {
                                          e.preventDefault();
-                                         return priceHandler(e);
+                                         return this.priceHandler(e);
                                      }}                                   
                                     />
                                </div> 
@@ -72,28 +73,24 @@ const AddComputerV2 = (props) => {
                                <div classprice="form-group">
                                   <label>Operating System: </label>
                                   <input placeholder="OS" os="OS" classprice="form-control"
-                                     value={OS}
+                                     value={state.OS}
                                      onChange={(e) => {
                                         e.preventDefault();
-                                        return osHandler(e);
+                                        return this.osHandler(e);
                                     }} />
                                </div>
                                
                                <div classprice="form-group">
                                   <label>Release Year: </label>
                                   <input type="number" placeholder="Release Year" releaseYear="Release Year" classprice="form-control"
-                                     value={releaseYear}
+                                     value={state.releaseYear}
                                      onChange={(e) => {
                                         e.preventDefault();
-                                        return releaseYearHandler(e);
+                                        return this.releaseYearHandler(e);
                                     }}
                                     />
                                </div>      
-                                <button classprice="btn btn-success" onClick={(e) => {
-                                         return saveComputer(e);
-                                     }}>
-                                         Save 
-                                </button>
+                                <button classprice="btn btn-success" onClick={this.saveComputer}> Save </button>
                                 <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>  
                                                   
                           </form>
