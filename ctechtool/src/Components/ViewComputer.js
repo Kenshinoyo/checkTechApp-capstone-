@@ -1,13 +1,13 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import DBridge from '../Services/DBridge';
 
-const ViewComputerV2 = (props) => {
+const ViewComputer = (props) => {
 
     const [state, setState] = useState({id, computer})
     const [id, setID] = useState(props.match.params.id)
     const [computer, setComputer] = useState({})
 
-    componentDidMount()
+    useEffect()
     {
         DBridge.getComputerByID(state.id).then((res) => {
             setState({computer:res.data})
@@ -47,4 +47,4 @@ const ViewComputerV2 = (props) => {
     );
 };
 
-export default ViewComputerV2;
+export default ViewComputer;

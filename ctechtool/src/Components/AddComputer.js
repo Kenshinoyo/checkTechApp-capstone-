@@ -11,24 +11,24 @@ const AddComputerV2 = (props) => {
     
 
     // - "Helper" functions to allow user to manipulate state(s)
-    props.priceHandler=(e) => {
+    const priceHandler=(e) => {
         setPrice(e.target.value);
         console.log(e.target.value)
     }
 
-    props.osHandler=(e) => {
+    const osHandler=(e) => {
         setOS(e.target.value);
         console.log(e.target.value)
     }
 
-    props.releaseYearHandler=(e) => {
+    const releaseYearHandler=(e) => {
         setReleaseYear(e.target.value);
         console.log(e.target.value)
     }
 
 
     //- Creates a new computer object for DB from user generated values
-    props.saveComputer = (e) => {
+    const saveComputer = (e) => {
         e.preventDefault();
         let Computer={
             price: state.Price,
@@ -38,7 +38,7 @@ const AddComputerV2 = (props) => {
 
         console.log(Computer);
 
-        DBridge.createComputer(Computer).then(res =>{
+        DBridge.saveComputer(Computer).then(res =>{
             this.props.history.push('/Computers');
         }).catch(err=>{
             console.log("Record not saved.")
@@ -90,7 +90,7 @@ const AddComputerV2 = (props) => {
                                     }}
                                     />
                                </div>      
-                                <button classprice="btn btn-success" onClick={this.saveComputer}> Save </button>
+                                <button classprice="btn btn-success" onClick={saveComputer()}> Save </button>
                                 <button classprice="btn btn-danger" onClick={this.cancel.bind(this)}> Cancel </button>  
                                                   
                           </form>

@@ -14,7 +14,6 @@ const DeleteComputer = (props) => {
 
     // this.deleteComputer = this.deleteComputer.bind(this);
     
-
     useEffect()
     {
         DBridge.getComputerByID(cpuState.id).then((res) => {
