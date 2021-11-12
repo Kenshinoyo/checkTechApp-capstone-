@@ -1,4 +1,4 @@
-CheckTech Inventory Tool
+**CheckTech Inventory Management Tool**
 
 - The CheckTech tool is a browser-based application for the purpose of managing an inventory of dekstop PC hardware. It'll allow you to
 create, read, update, and delete whole lists/entries for managing your PC database. 
