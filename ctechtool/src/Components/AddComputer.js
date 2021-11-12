@@ -3,6 +3,8 @@ import { useHistory } from 'react-router-dom';
 import DBridge from '../Services/DBridge';
 
 const AddComputerV2 = (props) => {
+
+    const history = useHistory()
     
     const [state, setState] = useState({Price, OS, releaseYear})
     const [Price, setPrice] = useState(0)
@@ -39,14 +41,14 @@ const AddComputerV2 = (props) => {
         console.log(Computer);
 
         DBridge.saveComputer(Computer).then(res =>{
-            this.props.history.push('/Computers');
+            history.push('/Computers');
         }).catch(err=>{
             console.log("Record not saved.")
         })
     }// -Closing save method
 
     props.cancel();{
-        this.props.history.push('/Computers');
+        history.push('/Computers');
     }
 
 
@@ -65,7 +67,7 @@ const AddComputerV2 = (props) => {
                                      value={state.Price}
                                      onChange={(e) => {
                                          e.preventDefault();
-                                         return this.priceHandler(e);
+                                         return priceHandler(e);
                                      }}                                   
                                     />
                                </div> 
@@ -76,7 +78,7 @@ const AddComputerV2 = (props) => {
                                      value={state.OS}
                                      onChange={(e) => {
                                         e.preventDefault();
-                                        return this.osHandler(e);
+                                        return osHandler(e);
                                     }} />
                                </div>
                                
@@ -86,7 +88,7 @@ const AddComputerV2 = (props) => {
                                      value={state.releaseYear}
                                      onChange={(e) => {
                                         e.preventDefault();
-                                        return this.releaseYearHandler(e);
+                                        return releaseYearHandler(e);
                                     }}
                                     />
                                </div>      

@@ -12,7 +12,7 @@ const UpdateComputer = (props) => {
     const [releaseYear, setReleaseYear] = useState(0)
 
     // - "Placeholder" state for JSON data
-    const [cpuState, setCPUState] = useState({Price, OS, releaseYear})
+    const [cpuState, setCPUState] = useState({id, Price, OS, releaseYear})
         
     // this.idHandler = this.idHandler.bind(this);
     // this.priceHandler = this.priceHandler.bind(this);
@@ -61,7 +61,7 @@ const UpdateComputer = (props) => {
            OS: cpuState.OS
         };
         
-        DBridge.reformComputer(Computer,this.cpuState.id).then((res) => {
+        DBridge.reformComputer(Computer, cpuState.id).then((res) => {
                 history.push('/Computers');
         });
     }
