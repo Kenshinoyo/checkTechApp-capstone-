@@ -10,10 +10,14 @@ const DeleteComputer = (props) => {
     const [Price, setPrice] = useState(0)
     const [OS, setOS] = useState('')
     const [releaseYear, setReleaseYear] = useState(0)
+
+    // - "Placeholder" state for JSON data
     const [cpuState, setCPUState] = useState({id, Price, OS, releaseYear})
 
     // this.deleteComputer = this.deleteComputer.bind(this);
     
+
+    // - Acquires JSON data from back end and applies it for user manipulation
     useEffect()
     {
         DBridge.getComputerByID(cpuState.id).then((res) => {

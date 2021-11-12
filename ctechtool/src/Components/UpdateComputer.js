@@ -20,6 +20,7 @@ const UpdateComputer = (props) => {
     // this.releaseYearHandler = this.releaseYearHandler.bind(this);
     // this.reformComputer = this.reformComputer.bind(this);      
 
+    // - Acquires JSON data from back end and applies it for user manipulation
     useEffect()
     {
         DBridge.getComputerByID(id).then((res) => {

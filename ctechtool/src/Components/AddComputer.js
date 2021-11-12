@@ -6,10 +6,13 @@ const AddComputerV2 = (props) => {
 
     const history = useHistory()
     
-    const [state, setState] = useState({Price, OS, releaseYear})
+    
     const [Price, setPrice] = useState(0)
     const [OS, setOS] = useState('')
     const [releaseYear, setReleaseYear] = useState(0)
+
+    // - "Placeholder" state for JSON data
+    const [state, setState] = useState({Price, OS, releaseYear})
     
 
     // - "Helper" functions to allow user to manipulate state(s)

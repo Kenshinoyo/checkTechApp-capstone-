@@ -3,10 +3,14 @@ import DBridge from '../Services/DBridge';
 
 const ViewComputer = (props) => {
 
-    const [state, setState] = useState({id, computer})
+    
     const [id, setID] = useState(props.match.params.id)
     const [computer, setComputer] = useState({})
 
+    // - "Placeholder" state for JSON data
+    const [state, setState] = useState({id, computer})
+
+    // - Acquires JSON data from back end and applies it for user viewing
     useEffect()
     {
         DBridge.getComputerByID(state.id).then((res) => {
