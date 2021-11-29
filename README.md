@@ -1,5 +1,7 @@
 **CheckTech Inventory Management Tool**
 
+*Still In Development!*
+
 - The CheckTech tool is a browser-based application for the purpose of managing an inventory of dekstop PC hardware. It'll allow you to
 create, read, update, and delete whole lists/entries for managing your PC database. 
 
@@ -11,10 +13,10 @@ create, read, update, and delete whole lists/entries for managing your PC databa
 
 - User currently has the ability to add, view, and delete a Computer with fields for the price, operating system(os), and release year.
 
-(IN DEVELOPMENT)
+(IN PROGRESS)
 
 - Refactor code to a more modern standard
-- Adding additional tables for improved CRUD functionality(a table for hardware models, manufacturers, and a join table to connect them)
+- Adding additional data tables for improved CRUD functionality(a table for hardware models, manufacturers, and a join table to connect them)
 - Adding a search bar to UI
 - Improve table functionality
 - Adding a "dark mode"
