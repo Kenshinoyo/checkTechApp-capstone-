@@ -1,11 +1,15 @@
-**CheckTech Inventory Management Tool**
+**CheckTech Inventory Management Tool(BETA)**
 
 *Still In Development!*
 
 - The CheckTech tool is a browser-based application for the purpose of managing an inventory of dekstop PC hardware. It'll allow you to
 create, read, update, and delete whole lists/entries for managing your PC database. 
 
-- While used for PC hardware, this inventory management application can be utilized for multiple types of data.
+- App's front end is written in JavaScript, using the React framework. Back-end is written in Java, using MySQL for data queries
+
+- While used for aggregating PC hardware inventory, this inventory management application can be utilized for multiple types of data.
+
+- Application is currently using **legacy** 
 
 *FEATURES*:
 
