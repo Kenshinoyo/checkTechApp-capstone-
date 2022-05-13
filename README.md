@@ -15,7 +15,7 @@ create, read, update, and delete whole lists/entries for managing your PC databa
 
 **Features will be added/udpated/deleted over time!**
 
-- User currently has the ability to add, view, and delete a Computer with fields for the price, operating system(os), and release year.
+- User currently has the ability to create/add, view, and delete a Computer with fields for the price, operating system(os), and release year.
 
 (IN PROGRESS)
 
