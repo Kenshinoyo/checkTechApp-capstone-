@@ -9,7 +9,7 @@ create, read, update, and delete whole lists/entries for managing your PC databa
 
 - While used for aggregating PC hardware inventory, this inventory management application can be utilized for multiple types of data.
 
-- Application is currently using **legacy** 
+- **APPLICATION IS CURRENTLY USING LEGACT SOFTWARE. PLEASE VERIFY DEPEDNENCY VERSIONS BEFORE TESTING!**
 
 *FEATURES*:
 
