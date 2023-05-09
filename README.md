@@ -5,11 +5,11 @@
 - The CheckTech tool is a browser-based application for the purpose of managing inventory. It'll allow you to
 create, read, update, and delete whole lists/entries for managing your database. 
 
-- App's front end is written in JavaScript, using the React framework. Back-end is written in Java, using MySQL for data queries
+- The application's front end is written in JavaScript, using the React framework. Back-end is written in Java, using MySQL for data queries
 
 - While used for aggregating PC hardware inventory, this inventory management application can be utilized for multiple types of data.
 
-- **APPLICATION IS CURRENTLY USING LEGACT SOFTWARE. PLEASE VERIFY DEPEDNENCY VERSIONS IN THE PACKAGE FILE CONTAINED IN THE CTECHTOOL FOLDER BEFORE TESTING!**
+- **APPLICATION IS CURRENTLY USING LEGACY SOFTWARE. PLEASE VERIFY DEPEDNENCY VERSIONS IN THE PACKAGE FILE CONTAINED IN THE CTECHTOOL FOLDER BEFORE TESTING!**
 
 *FEATURES*:
 
