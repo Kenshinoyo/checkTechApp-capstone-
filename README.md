@@ -1,6 +1,7 @@
 **CheckTech Inventory Management Tool(BETA)**
 
 *Still In Development!*
+*Application will be receiving some updates soon. Stay tuned!*
 
 - The CheckTech tool is a browser-based application for the purpose of managing inventory. It'll allow you to
 create, read, update, and delete whole lists/entries for managing your database. 
