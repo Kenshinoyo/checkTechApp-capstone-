@@ -33,3 +33,7 @@ create, read, update, and delete whole lists/entries for managing your database.
 ~~- Undefined errors for helper functions within components due to refactoring~~
 
 - "Cancel" helper function not being defined properly
+
+*Stretch Goal*:
+
+- Connect a system that allows user to place an order
